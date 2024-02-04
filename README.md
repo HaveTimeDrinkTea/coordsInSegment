@@ -13,10 +13,10 @@ The function should return (in any array) all the coordinates which are within a
   * use pythagaus theorem to find the hypotenuse between the POO and PTP.
       * if the hypotenuse is more than the radius, then the POO is ***not*** within the view of POO
       * if the hypotenuse is less than or equal to the radius, then check the direction of the PTP w.r.t POO. Reject any coordinates which do not fit the following logic
-        *  if the POO is pointing "North" then (bx-ax) >= 0 and (by-ay) >= 0
-        *  if the POO is pointing "South" then (bx-ax) =< 0 and (by-ay) =< 0
-        *  if the POO is pointing "East" then (bx-ax) >= 0
-        *  if the POO is pointing "West" then (bx- ax) <= 0
+        *  if the POO is pointing "North" then (by-ay) > 0
+        *  if the POO is pointing "South" then (by-ay) < 0
+        *  if the POO is pointing "East" then (bx-ax) > 0
+        *  if the POO is pointing "West" then (bx- ax) < 0
   * now check that the remaining PTPs are within the angle of POO's vision.
 
 
