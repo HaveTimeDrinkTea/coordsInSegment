@@ -96,6 +96,7 @@ pooX = pointsDictAll[pooCordNum]["x"]
 pooY = pointsDictAll[pooCordNum]["y"]
 pooDir = pointsDictAll[pooCordNum]["direction"]
 
+print("")
 print(f"You have chosen Point of Origin {originNum} with arc degree of {arcDegree} and arc radius of {arcRadius}")
 print(f"This point is located at ({pooX},{pooY}) and points towards {pooDir}.")
 
@@ -118,32 +119,72 @@ for i in pointsDictTmp.copy():
    tpoCordNum = i
    tpoX = pointsDictTmp[i]["x"]
    tpoY = pointsDictTmp[i]["y"]
-   # print(f"{tpoCordNum} is ({tpoX},{tpoY})")
+
    xDist = tpoX - pooX
    yDist = tpoY - pooY
-   dist = round(math.sqrt(xDist**2 + yDist**2),2)
-   
-   print(f"Target {tpoCordNum} vs origin {pooCordNum} has a distance of {dist} and the radius is {arcRadius}")
 
-   # if dist <= arcRadius:
-   #    pointsDictTarget[tpoCordNum] = pointsDictTmp[tpoCordNum]
-   #    print(f"{tpoCordNum} has been added!")
-   #    print(pointsDictTarget)
-
-   if dist > arcRadius:
-      del pointsDictTmp[tpoCordNum]
-      print(f"{tpoCordNum} has been eliminated as dist > arcRadius!")
-   elif pooDir == "North" and yDist > 0:
-      print("target in the same North direction")
-   elif pooDir == "South" and yDist < 0:
-      print("target in the same South direction")
-   elif pooDir == "East" and xDist > 0:   
-      print("target in the same East direction")
-   elif pooDir == "West" and xDist < 0:   
-      print("target in the same East direction")
+   if xDist != 0:
+      dist = round(math.sqrt(xDist**2 + yDist**2),2)
+      angleThetaDegree = round((math.atan(yDist/xDist)/math.pi)*180,1)
    else:
-      print(pointsDictTmp)
-      del pointsDictTmp[tpoCordNum]
-      print(f"{tpoCordNum} has been eliminated because not in same direction!")
+      dist = yDist   
+      angleThetaDegree = 0
 
-print(pointsDictTmp)
+   
+   
+   print(f"Target {tpoCordNum} vs origin {pooCordNum} has a distance of {dist} and the radius is {arcRadius} with degree of {angleThetaDegree}.")
+
+
+   if abs(dist) > arcRadius:
+      del pointsDictTmp[tpoCordNum]
+      print(f"Target {tpoCordNum} has been eliminated as dist > arcRadius!")
+   elif pooDir == "North" and yDist > 0:    
+      if (angleThetaDegree >= 0) and (90 - angleThetaDegree <= (arcDegree*0.5)):
+         print(f"Target {tpoCordNum} is in the same North direction and in the view of {pooCordNum}") 
+      elif (angleThetaDegree <= 0) and (270 - angleThetaDegree >= (360-(arcDegree*0.5))):
+         print(f"Target {tpoCordNum} is in the same North direction and in the view of {pooCordNum}") 
+      else:
+         print(f"Target {tpoCordNum} is not in the view of {pooCordNum} at all and it has been eliminated.") 
+         del pointsDictTmp[tpoCordNum]
+   elif pooDir == "South" and yDist < 0:
+      if (angleThetaDegree >= 0) and (180 - angleThetaDegree <= (180 - (arcDegree*0.5))):
+         print(f"Target {tpoCordNum} is in the same South direction and in the view of {pooCordNum}") 
+      elif (angleThetaDegree <= 0) and (180 - angleThetaDegree >= (180 + (arcDegree*0.5))):
+         print(f"Target {tpoCordNum} is in the same South direction and in the view of {pooCordNum}") 
+      else:
+         print(f"Target {tpoCordNum} is not in the view of {pooCordNum} at all and it has been eliminated.") 
+         del pointsDictTmp[tpoCordNum]
+   elif pooDir == "East" and xDist > 0:   
+      if (angleThetaDegree >= 0) and (90 - angleThetaDegree >= (90 - (arcDegree*0.5))):
+         print(f"Target {tpoCordNum} is in the same East direction and in the view of {pooCordNum}") 
+      elif (angleThetaDegree <= 0) and (90 - angleThetaDegree <= (90 + (arcDegree*0.5))):
+         print(f"Target {tpoCordNum} is in the same East direction and in the view of {pooCordNum}") 
+      else:
+         print(f"Target {tpoCordNum} is not in the view of {pooCordNum} at all and it has been eliminated.") 
+         del pointsDictTmp[tpoCordNum]
+   elif pooDir == "West" and xDist < 0:   
+      if (angleThetaDegree >= 0) and (270 - angleThetaDegree >= (270 - (arcDegree*0.5))):
+         print(f"Target {tpoCordNum} is in the same West direction and in the view of {pooCordNum}") 
+      elif (angleThetaDegree <= 0) and (270 - angleThetaDegree <= (270 + (arcDegree*0.5))):
+         print(f"Target {tpoCordNum} is in the same West direction and in the view of {pooCordNum}") 
+      else:
+         print(f"Target {tpoCordNum} is is not in the view of {pooCordNum} at all and has been eliminated.") 
+         del pointsDictTmp[tpoCordNum]
+   else:
+      del pointsDictTmp[tpoCordNum]
+      print(f"Target {tpoCordNum} is has been eliminated because it is not even in same direction as {pooCordNum}!")
+   print("")   
+
+print("")
+print("****************************************************************")
+print("****************************************************************")
+print("")
+if not pointsDictTmp:
+   print(f"It appears that Origin {pooCordNum} cannot see  any other coordinates within an arc of {arcDegree} degrees and a distance of {arcRadius}:")
+else:
+   print(f"The following array contains the coordinate(s) that Origin {pooCordNum} can see in an arc of {arcDegree} degrees and a distance of {arcRadius}")
+   print(pointsDictTmp)
+
+print("")
+print("================================================================")
+print("================================================================")
