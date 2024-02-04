@@ -93,6 +93,7 @@ pooX = pointsDict["CoordNum" + originNum]["x"]
 pooY = pointsDict["CoordNum" + originNum]["y"]
 pooDir = pointsDict["CoordNum"+ originNum]["direction"]
 
+
 print(f"You have chosen Point of Origin {originNum} with arc degree of {arcDegree} and arc radius of {arcRadius}")
 print(f"This point is located at ({pooX},{pooY}) and points towards {pooDir}.")
 
