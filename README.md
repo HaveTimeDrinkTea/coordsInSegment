@@ -6,10 +6,18 @@ This is my attempt at writing a function for a gaming logic. Given a scatter gra
 The function should return (in any array) all the coordinates which are within a arc segment of "radiating" towards the direction associated with a specified coordinate. The arc segment is created based on user provided angle of the arc segment and also the distance (i.e. radius) of the arc segment.
 
 ### Methodology: Pseudo Code
-* Allow user to select one coordinates as the point of origin (POO) from the list of coordinates.
-* Allow user to specify the angle of the arc segment and also the distance (i.e. radius) of the arc segment.
+* Ask user to select one coordinates as the point of origin (POO) from the list of coordinates.
+* Ask user to specify the angle of the arc segment and also the distance (i.e. radius) of the arc segment.
 * Using the radius specified by the user, parse through all other coordinates in the scatter plot to identify the coordinates which are within the direction of the arc segment radiating from the POO and within the radius. Put these coordinates into an array.
-* Use a formula to check whether the identified coordinates are indeed within the segment by checking the angle
+  * Calculate the values of horizontal distance (along the x-axis) and the vertical distance (along the y-axis) of the POO (ax,ay) and the potential target point (PTP) of (bx,by).
+  * use pythagaus theorem to find the hypotenuse between the POO and PTP.
+      * if the hypotenuse is more than the radius, then the POO is ***not*** within the view of POO
+      * if the hypotenuse is less than or equal to the radius, then check the direction of the PTP w.r.t POO. Reject any coordinates which do not fit the following logic
+        *  if the POO is pointing "North" then (bx-ax) >= 0 and (by-ay) >= 0
+        *  if the POO is pointing "South" then (bx-ax) =< 0 and (by-ay) =< 0
+        *  if the POO is pointing "East" then (bx-ax) >= 0
+        *  if the POO is pointing "West" then (bx- ax) <= 0
+  * now check that the remaining PTPs are within the angle of POO's vision.
 
 
 
