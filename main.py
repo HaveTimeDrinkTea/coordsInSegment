@@ -147,7 +147,3 @@ for i in pointsDictTmp.copy():
       print(f"{tpoCordNum} has been eliminated because not in same direction!")
 
 print(pointsDictTmp)
-
-
-
-
