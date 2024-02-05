@@ -78,18 +78,27 @@ python3 main.py
 
 ### Video Demos
 
-Chosen point 1 with view of vision of 45 degrees and distance of 20 towards "North".
+#### Demo 1: Chosen point 1 with view of vision of 45 degrees and distance of 20 towards "North".
+
+https://github.com/HaveTimeDrinkTea/coordsInSegment/assets/119045159/cdbd956c-ceac-4fc1-9bdd-e0dccb0b7381
 
 
 
-Chosen point 3 with view of vision of 30 degrees and distance of 15.
+#### Demo 2:Chosen point 3 with view of vision of 30 degrees and distance of 15 towards "South".
+
+https://github.com/HaveTimeDrinkTea/coordsInSegment/assets/119045159/9a300a5c-7738-49e1-b4f6-0af48d3ce7b5
 
 
-Chosen point 7 with view of vision of 20 degrees and distance of 10 towards the "South".
+
+#### Demo 3: Chosen point 7 with view of vision of 20 degrees and distance of 10 towards the "South".
+
+https://github.com/HaveTimeDrinkTea/coordsInSegment/assets/119045159/8de9f784-9daa-4309-8bce-3fbe8ddb0d2d
+
+
 
 ## Credits
 
-* 
+* Example and data provided by [The Developer Academy](https://www.thedeveloperacademy.com) 
 
 
 
