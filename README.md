@@ -20,14 +20,14 @@ The function should return (in any array) all the coordinates which are within a
         *  if the POO is pointing "East" then (bx-ax) > 0
         *  if the POO is pointing "West" then (bx- ax) < 0
   * next, check that the remaining PTPs are within the angle of POO's vision.
-        * first calculate the angle of made by the distance between POO and TPO using Pythagoras theorem. 
-          * if the POO is pointing "North" or "South" then see if the adjacent angle (the angle touching the Y axis) is within the range
-          * if the POO is pointing "East" or "West" then see if the adjacent angle (the angle touching the X axis) is within the range 
-        * the range of the POO is determined
-          * for "North" facing, the range is hovering around the positive Y axis with half of the user provide angle on either side of the Y axis.
-          * for "South" facing, the range is hovering as the "North" facing on the negative Y axis.
-           * for "East" facing, the range is hovering around the positive X axis with half of the user provide angle on either side of the X axis.
-          * for "West" facing, the range is hovering as the "East" facing on the negative X axis.
+    * first calculate the angle of made by the distance between POO and TPO using Pythagoras theorem. 
+      * if the POO is pointing "North" or "South" then see if the adjacent angle (the angle touching the Y axis) is within the range
+      * if the POO is pointing "East" or "West" then see if the adjacent angle (the angle touching the X axis) is within the range
+    * the range of the POO is determined
+      * for "North" facing, the range is hovering around the positive Y axis with half of the user provide angle on either side of the Y axis.
+      * for "South" facing, the range is hovering as the "North" facing on the negative Y axis.
+      * for "East" facing, the range is hovering around the positive X axis with half of the user provide angle on either side of the X axis.
+      * for "West" facing, the range is hovering as the "East" facing on the negative X axis.
 
 
 
