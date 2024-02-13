@@ -5,13 +5,13 @@ This is my attempt at writing a function for a gaming logic.
 
 Given a scatter graph of coordinates in the X-Y axis where each set of coordinates are given a number label and a direction of "North", "East", "South", "West". 
 
-The function should return (in any array) all the coordinates which are within a arc segment of "radiating" towards the direction associated with a specified coordinate. The arc segment is created based on user provided angle of the arc segment and also the distance (i.e. radius) of the arc segment.
+The function should return (in an array) all the coordinates which are within an arc segment "radiating" towards the direction associated with a specified coordinate. The arc segment is created based on user provided angle and distance (i.e. radius) of the arc segment.
 
 ### Methodology: Pseudo Code
-* Ask user to select one coordinates as the point of origin (POO) from the list of coordinates.
+* Ask user to select one numbered coordinate (1 - 20) as the point of origin (POO) from the list of coordinates.
 * Ask user to specify the angle of the arc segment and also the distance (i.e. radius) of the arc segment.
-* Using the radius specified by the user, parse through all other coordinates in the scatter plot to identify the coordinates which are within the direction of the arc segment radiating from the POO and within the radius. Put these coordinates into an array.
-  * Calculate the values of horizontal distance (along the x-axis) and the vertical distance (along the y-axis) of the POO (ax,ay) and the potential target point (PTP) of (bx,by).
+* Using the radius specified by the user, parse through all other Potential Target Points (PTP) in the scatter plot to identify the PTPs which are within the direction of the arc segment radiating from the POO and within the radius. Eliminate any PTPs which are not within the radius or direction of the specific arc. 
+  * Calculate the values of horizontal distance (along the x-axis) and the vertical distance (along the y-axis) of the POO (ax,ay) and the PTP (bx,by).
   * use Pythagoras theorem to find the hypotenuse between the POO and PTP.
       * if the hypotenuse is more than the radius, then the POO is ***not*** within the view of POO
       * if the hypotenuse is less than or equal to the radius, then check the direction of the PTP w.r.t POO. Reject any coordinates which do not fit the following logic
@@ -28,9 +28,8 @@ The function should return (in any array) all the coordinates which are within a
       * for "South" facing, the range is hovering as the "North" facing on the negative Y axis.
       * for "East" facing, the range is hovering around the positive X axis with half of the user provide angle on either side of the X axis.
       * for "West" facing, the range is hovering as the "East" facing on the negative X axis.
-
-
-
+    * Eliminate all PTPs which do not fit into the arc segment.
+*  Present the PTPs in an array to the user or return a message to say no PTP can be found. 
 
 
 
